@@ -1,0 +1,26 @@
+<div class="row">
+    <div *ngFor="let pokemonCard of pokemonCards" (mouseenter)="op.show($event)" (mouseleave)="op.hide()" class="card"
+        style="width: 15rem; margin: 1rem;" (click)="viewPokemonDetail()">
+        <img src="../../../assets/pokemon/{{pokemonCard.name.charAt(0).toUpperCase() + pokemonCard.name.slice(1)}}.png"
+            class="card-img-top" alt="{{pokemonCard.name.charAt(0).toUpperCase() + pokemonCard.name.slice(1)}}">
+        <div class="card-body text-center">
+            <h5 class="card-title">{{pokemonCard.name.charAt(0).toUpperCase() + pokemonCard.name.slice(1)}}</h5>
+            <div class="row">
+                <div *ngFor="let type of pokemonCard.types; let length = count" class="row types-image">
+                    <div *ngIf="length<2" class="col-12">
+                        <img src="../../../assets/types/{{type.type.name}}.gif">
+                    </div>
+                    <div *ngIf="length==2" class="col-6">
+                        <img src="../../../assets/types/{{type.type.name}}.gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <p-progressSpinner class="col-12" strokeWidth="1" [style]="{width: '5rem', height: '5rem', display: 'block', margin: 'auto'}" *ngIf="isLoading"></p-progressSpinner>
+</div>
+<p-overlayPanel #op>
+    Content
+</p-overlayPanel>
