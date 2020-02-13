@@ -44,7 +44,6 @@ export class PokemonCardComponent implements OnInit {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       this.isLoading = true;
       this.offset += 20;
-      this.limit += 20;
       this.getPokemon(this.offset, this.limit);
     }
   }
