@@ -1,15 +1,13 @@
 import { Component, OnInit, HostListener } from "@angular/core";
-import $ from "jquery";
 
 // Models
-import { NamedAPIResourceList } from "../../models/utility/NamedAPIResourceList";
-import { NamedAPIResource } from "../../models/utility/NamedAPIResource";
 import { PokemonCard } from "../../models/own/PokemonCard";
-import { Pokemon } from "../../models/pokemon/Pokemon";
 
 // Services
-import { PokemonCardService } from "src/app/services/pokemon-card.service";
-import { ThrowStmt } from "@angular/compiler";
+import { Apollo } from "apollo-angular";
+import PkmQueries from '../../queries/pokemon-card';
+
+const PokemonCardsQuery = PkmQueries.PokemonCardsQuery;
 
 @Component({
   selector: "app-pokemon-card",
@@ -17,18 +15,14 @@ import { ThrowStmt } from "@angular/compiler";
   styleUrls: ["./pokemon-card.component.css"]
 })
 export class PokemonCardComponent implements OnInit {
-  pokemons: NamedAPIResourceList;
-  pokemonList: NamedAPIResource[];
-  pokemon: Pokemon;
   pokemonCards: PokemonCard[];
-  pokemonCard: PokemonCard;
 
   offset: number;
   limit: number;
   isLoading: boolean;
 
-  constructor(private pokemonCardService: PokemonCardService) {
-    this.pokemonCards = [];
+  constructor(private apollo: Apollo) {
+    this.pokemonCards = new Array();
     this.offset = 0;
     this.limit = 20;
     this.isLoading = false;
@@ -36,38 +30,32 @@ export class PokemonCardComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.getPokemon(this.offset, this.limit);
+    this.getPokemonCards(this.offset, this.limit);
   }
 
   @HostListener("window:scroll", [])
   onScroll(): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      this.isLoading = true;
       this.offset += 20;
-      this.getPokemon(this.offset, this.limit);
+      this.getPokemonCards(this.offset, this.limit);
     }
   }
 
-  getPokemon(offset: Number, limit: Number): void {
-    this.pokemonCardService
-      .getPokemon(offset, limit)
-      .subscribe(async (pokemon: NamedAPIResourceList) => {
-        this.pokemons = pokemon;
-        this.pokemonList = this.pokemons.results;
-        for (const pokemon of this.pokemonList) {
-          await this.getPokemonByName(pokemon.name);
+  getPokemonCards(offset: Number, limit: Number): void {
+    this.isLoading = true;
+    this.apollo
+      .watchQuery({
+        query: PokemonCardsQuery,
+        variables: {
+          offset: offset,
+          limit: limit
+        }
+      })
+      .valueChanges.subscribe(({ data }) => {
+        for (const ob of data.getPokemonCards) {
+          this.pokemonCards.push(ob);
         }
         this.isLoading = false;
-      });
-  }
-
-  async getPokemonByName(name: String) {
-    return this.pokemonCardService
-      .getPokemonByName(name)
-      .then((pokemon: Pokemon) => {
-        this.pokemonCards.push(
-          new PokemonCard(pokemon.name, pokemon.types.reverse())
-        );
       });
   }
 }

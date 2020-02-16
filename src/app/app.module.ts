@@ -12,6 +12,7 @@ import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.com
 //PrimeNG Modules
 import { OverlayPanelModule } from "primeng/overlaypanel";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     AppRoutingModule,
     HttpClientModule,
     OverlayPanelModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    GraphQLModule
   ],
   providers: [],
   bootstrap: [AppComponent]

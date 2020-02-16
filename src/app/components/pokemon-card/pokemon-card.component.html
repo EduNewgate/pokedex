@@ -18,8 +18,8 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <p-progressSpinner class="col-12" strokeWidth="1" [style]="{width: '5rem', height: '5rem', display: 'block', margin: 'auto'}" *ngIf="isLoading"></p-progressSpinner>
+<div class="row spinner-div" *ngIf="isLoading">
+    <p-progressSpinner class="col-12" strokeWidth="1" [style]="{width: '5rem', height: '5rem', display: 'block', margin: 'auto'}"></p-progressSpinner>
 </div>
 <p-overlayPanel #op>
     Content
