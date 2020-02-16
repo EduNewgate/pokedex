@@ -1,17 +1,13 @@
 <div class="row">
-    <div *ngFor="let pokemonCard of pokemonCards" (mouseenter)="op.show($event)" (mouseleave)="op.hide()" class="card"
-        style="width: 15rem; margin: 1rem;" (click)="viewPokemonDetail()">
-        <img src="../../../assets/pokemon/{{pokemonCard.name.charAt(0).toUpperCase() + pokemonCard.name.slice(1)}}.png"
-            class="card-img-top" alt="{{pokemonCard.name.charAt(0).toUpperCase() + pokemonCard.name.slice(1)}}">
+    <div *ngFor="let pkmCard of pokemonCards" (click)="showDialog(pkmCard);" class="card"
+        style="width: 15rem; margin: 1rem; cursor: pointer;">
+        <img src="../../../assets/pokemon/{{pkmCard.name}}.png" class="card-img-top" alt="{{pkmCard.name}}">
         <div class="card-body text-center">
-            <h5 class="card-title">{{pokemonCard.name.charAt(0).toUpperCase() + pokemonCard.name.slice(1)}}</h5>
+            <h5 class="card-title">{{pkmCard.name}}</h5>
             <div class="row">
-                <div *ngFor="let type of pokemonCard.types; let length = count" class="row types-image">
-                    <div *ngIf="length<2" class="col-12">
-                        <img src="../../../assets/types/{{type.type.name}}.gif">
-                    </div>
-                    <div *ngIf="length==2" class="col-6">
-                        <img src="../../../assets/types/{{type.type.name}}.gif">
+                <div *ngFor="let type of pkmCard.types; let length = count" class="types-image">
+                    <div class="col">
+                        <img src="../../../assets/types/{{type.type.name}}.png">
                     </div>
                 </div>
             </div>
@@ -19,8 +15,52 @@
     </div>
 </div>
 <div class="row spinner-div" *ngIf="isLoading">
-    <p-progressSpinner class="col-12" strokeWidth="1" [style]="{width: '5rem', height: '5rem', display: 'block', margin: 'auto'}"></p-progressSpinner>
+    <p-progressSpinner class="col-12" strokeWidth="1"
+        [style]="{width: '5rem', height: '5rem', display: 'block', margin: 'auto'}"></p-progressSpinner>
 </div>
-<p-overlayPanel #op>
-    Content
-</p-overlayPanel>
+<p-dialog *ngIf="pokemonCard" position="left" header="{{pokemonCard.name}}" [(visible)]="displayDialog"
+    [transitionOptions]="'200ms'" [style]="{width: '50vw'}">
+    <div class="content">
+        <div class="row">
+            <div class="col-4">
+                <div class="row" style="margin: 1rem;">
+                    <img src="../../../assets/pokemon/{{pokemonCard.name}}.png" style="width: 100%;"
+                        alt="{{pokemonCard.name}}">
+                </div>
+                <div class="row">
+                    <div *ngFor="let type of pokemonCard.types; let length = count" class="types-image">
+                        <img src="../../../assets/types/{{type.type.name}}.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="row" style="margin: 1rem;">
+                    <div class="col-4" style="font-weight: bold;">Height</div>
+                    <div class="col-8">{{pokemonCard.height}} meters</div>
+                </div>
+                <div class="row" style="margin: 1rem;">
+                    <div class="col-4" style="font-weight: bold;">Weight</div>
+                    <div class="col-8">{{pokemonCard.weight}} kg</div>
+                </div>
+                <div style="margin: 1rem;" *ngFor="let ability of pokemonCard.abilities; let i = index" class="row">
+                    <div *ngIf="ability.is_hidden; then hiddenAb else normalAb"></div>
+                    <ng-template #hiddenAb>
+                        <div class="col-4" style="font-weight: bold;">Hidden ability</div>
+                    </ng-template>
+                    <ng-template #normalAb>
+                        <div class="col-4" style="font-weight: bold;">Ability {{i+1}}</div>
+                    </ng-template>
+                    <div class="col-8">{{ability.ability.name}}</div>
+                </div>
+                <div class="row" style="margin: 1rem;">
+                    <div class="col-12">More info</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p-chart type="bar" [data]="dataChart" [options]="chartOptions"></p-chart>
+            </div>
+        </div>
+    </div>
+</p-dialog>

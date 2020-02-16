@@ -1,12 +1,15 @@
 import { PokemonType } from '../pokemon/PokemonType';
+import { PokemonAbility } from '../pokemon/PokemonAbility';
+import { PokemonStat } from '../pokemon/PokemonStat';
 
 export class PokemonCard {
 
     name: String;
-    types: PokemonType[]
+    weight: number;
+    height: number;
+    types: PokemonType[];
+    abilities: PokemonAbility[];
+    stats: PokemonStat[];
 
-    constructor(name: String, types: PokemonType[]) {
-        this.name = name;
-        this.types = types;
-    }
+    constructor() { }
 }
