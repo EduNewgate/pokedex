@@ -9,6 +9,14 @@
     padding: 1rem;
 }
 
+.ui-button {
+    background-color: white;
+    border-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
 .spinner-div {
     background-color: rgba(50, 115, 220, 0.3);
     z-index: 1;

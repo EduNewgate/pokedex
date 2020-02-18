@@ -10,6 +10,7 @@ import { PokemonComponent } from "./components/pokemon/pokemon.component";
 import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.component";
 
 //PrimeNG Modules
+import {ButtonModule} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { ChartModule } from 'primeng/chart';
@@ -27,6 +28,7 @@ import { GraphQLModule } from './graphql.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    ButtonModule,
     DialogModule,
     ProgressSpinnerModule,
     ChartModule,

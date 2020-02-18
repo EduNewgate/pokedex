@@ -1,9 +1,12 @@
 <div class="row">
-    <div *ngFor="let pkmCard of pokemonCards" (click)="showDialog(pkmCard);" class="card"
+    <div *ngFor="let pkmCard of pokemonCards" class="card"
         style="width: 15rem; margin: 1rem; cursor: pointer;">
-        <img src="../../../assets/pokemon/{{pkmCard.name}}.png" class="card-img-top" alt="{{pkmCard.name}}">
+        <img id="imgCard" src="../../../assets/pokemon/{{pkmCard.name}}.png" class="card-img-top"
+            alt="{{pkmCard.name}}">
         <div class="card-body text-center">
-            <h5 class="card-title">{{pkmCard.name}}</h5>
+            <h5 class="card-title">
+                <button type="button" pButton icon="pi pi-external-link" (click)="showDialog(pkmCard);" label="{{pkmCard.name}}"></button>
+            </h5>
             <div class="row">
                 <div *ngFor="let type of pkmCard.types; let length = count" class="types-image">
                     <div class="col">
@@ -24,7 +27,7 @@
         <div class="row">
             <div class="col-4">
                 <div class="row" style="margin: 1rem;">
-                    <img id="imgCard" src="../../../assets/pokemon/{{pokemonCard.name}}.png" style="width: 100%;"
+                    <img src="../../../assets/pokemon/{{pokemonCard.name}}.png" style="width: 100%;"
                         alt="{{pokemonCard.name}}">
                 </div>
                 <div class="row">

@@ -8,7 +8,6 @@ import { PokemonStat } from "../../models/pokemon/PokemonStat";
 import { Apollo } from "apollo-angular";
 import PkmQueries from "../../queries/pokemon-card";
 import Utils from "../../utils/Utils";
-import { PokemonAbility } from 'src/app/models/pokemon/PokemonAbility';
 
 const PokemonCardsQuery = PkmQueries.PokemonCardsQuery;
 
@@ -27,6 +26,7 @@ export class PokemonCardComponent implements OnInit {
   dataChart: any;
   displayDialog: boolean;
   chartOptions: any;
+  color: number[];
 
   constructor(private apollo: Apollo) {
     this.pokemonCards = new Array();
@@ -74,7 +74,13 @@ export class PokemonCardComponent implements OnInit {
 
   setPkmData(pokemonCard: PokemonCard) {
     this.pokemonCard = pokemonCard;
+    this.setColor(this.pokemonCard.name);
     this.buildChartData(pokemonCard.stats);
+  }
+
+  setColor(name: String) {
+    this.color = Utils.getDominantColor(name, document.getElementById("#imgCard"));
+    console.log(this.color)
   }
 
   buildChartData(stats: PokemonStat[]) {
@@ -89,8 +95,22 @@ export class PokemonCardComponent implements OnInit {
       datasets: [
         {
           label: "Base stats of " + this.pokemonCard.name,
-          backgroundColor: "rgba(179,181,198,0.2)",
-          borderColor: "rgba(179,181,198,1)",
+          backgroundColor:
+            "rgba(" +
+            this.color[0] +
+            ", " +
+            this.color[1] +
+            ", " +
+            this.color[2] +
+            ",0.8)",
+          borderColor:
+            "rgba(" +
+            this.color[0] +
+            ", " +
+            this.color[1] +
+            ", " +
+            this.color[2] +
+            ",1)",
           data: labelsValues
         }
       ]

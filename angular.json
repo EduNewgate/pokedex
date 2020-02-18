@@ -29,6 +29,7 @@
             ],
             "scripts": [
               "./node_modules/chart.js/dist/Chart.js",
+              "./node_modules/colorthief/dist/color-thief.umd.js",
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
