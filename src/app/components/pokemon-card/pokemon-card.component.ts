@@ -8,6 +8,7 @@ import { PokemonStat } from "../../models/pokemon/PokemonStat";
 import { Apollo } from "apollo-angular";
 import PkmQueries from "../../queries/pokemon-card";
 import Utils from "../../utils/Utils";
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 const PokemonCardsQuery = PkmQueries.PokemonCardsQuery;
 
@@ -19,6 +20,7 @@ const PokemonCardsQuery = PkmQueries.PokemonCardsQuery;
 export class PokemonCardComponent implements OnInit {
   pokemonCards: PokemonCard[];
   pokemonCard: PokemonCard;
+  img: HTMLImageElement
 
   offset: number;
   limit: number;
@@ -79,8 +81,8 @@ export class PokemonCardComponent implements OnInit {
   }
 
   setColor(name: String) {
-    this.color = Utils.getDominantColor(name, document.getElementById("#imgCard"));
-    console.log(this.color)
+    this.img = <HTMLImageElement> document.getElementById("imgCard" + this.pokemonCard.name);
+    this.color = Utils.getDominantColor(name, this.img);
   }
 
   buildChartData(stats: PokemonStat[]) {

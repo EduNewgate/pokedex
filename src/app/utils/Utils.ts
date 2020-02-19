@@ -5,11 +5,8 @@ export default class Utils {
     return name.charAt(0).toUpperCase() + name.replace("-", " ").slice(1);
   }
 
-  public static getDominantColor(name: String, img) {
+  public static getDominantColor(name: String, img: HTMLImageElement) {
     let colorThief = new ColorThief();
-    img = new Image();
-    img.src = "../../../assets/pokemon/" + name + ".png";
-    console.log(img)
     if (img.complete) {
       return colorThief.getColor(img);
     } else {
