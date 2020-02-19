@@ -8,7 +8,6 @@ import { PokemonStat } from "../../models/pokemon/PokemonStat";
 import { Apollo } from "apollo-angular";
 import PkmQueries from "../../queries/pokemon-card";
 import Utils from "../../utils/Utils";
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 const PokemonCardsQuery = PkmQueries.PokemonCardsQuery;
 
@@ -61,7 +60,7 @@ export class PokemonCardComponent implements OnInit {
           limit: limit
         }
       })
-      .valueChanges.subscribe(({ data }) => {
+      .valueChanges.subscribe(({ data }: any) => {
         for (const ob of data.getPokemonCards) {
           this.pokemonCards.push(ob);
         }
