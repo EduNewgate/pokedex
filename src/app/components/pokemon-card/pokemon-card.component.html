@@ -21,8 +21,13 @@
     <p-progressSpinner class="col-12" strokeWidth="1"
         [style]="{width: '5rem', height: '5rem', display: 'block', margin: 'auto'}"></p-progressSpinner>
 </div>
-<p-dialog *ngIf="pokemonCard" position="left" header="{{pokemonCard.name}}" [(visible)]="displayDialog"
-    [transitionOptions]="'200ms'" [style]="{width: '50vw'}">
+<p-dialog *ngIf="pokemonCard" position="left" [(visible)]="displayDialog" [transitionOptions]="'200ms'"
+    [style]="{width: '50vw'}">
+    <p-header class="header">
+        <h3>
+            <div style="float: left;">{{pokemonCard.name}}</div>
+        </h3>
+    </p-header>
     <div class="content">
         <div class="row">
             <div class="col-4">
@@ -30,28 +35,28 @@
                     <img src="../../../assets/pokemon/{{pokemonCard.name}}.png" style="width: 100%;"
                         alt="{{pokemonCard.name}}">
                 </div>
-                <div class="row">
-                    <div *ngFor="let type of pokemonCard.types; let length = count" class="types-image">
-                        <img src="../../../assets/types/{{type.type.name}}.png">
+                <div class="types-image-icons">
+                    <div *ngFor="let type of pokemonCard.types; let length = count" class="icon {{type.type.name}}" pTooltip="{{type.type.name}}" tooltipPosition="top">
+                        <img src="../../../assets/types/icons/{{type.type.name}}.svg">
                     </div>
                 </div>
             </div>
-            <div class="col-8">
+            <div class="col-8 data">
                 <div class="row" style="margin: 1rem;">
-                    <div class="col-4" style="font-weight: bold;">Height</div>
+                    <div class="col-4 bold">Height</div>
                     <div class="col-8">{{pokemonCard.height}} meters</div>
                 </div>
                 <div class="row" style="margin: 1rem;">
-                    <div class="col-4" style="font-weight: bold;">Weight</div>
+                    <div class="col-4 bold">Weight</div>
                     <div class="col-8">{{pokemonCard.weight}} kg</div>
                 </div>
                 <div style="margin: 1rem;" *ngFor="let ability of pokemonCard.abilities; let i = index" class="row">
                     <div *ngIf="ability.is_hidden; then hiddenAb else normalAb"></div>
                     <ng-template #hiddenAb>
-                        <div class="col-4" style="font-weight: bold;">Hidden ability</div>
+                        <div class="col-4 bold">Hidden ability</div>
                     </ng-template>
                     <ng-template #normalAb>
-                        <div class="col-4" style="font-weight: bold;">Ability {{i+1}}</div>
+                        <div class="col-4 bold">Ability {{i+1}}</div>
                     </ng-template>
                     <div class="col-8">{{ability.ability.name}}</div>
                 </div>

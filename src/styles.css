@@ -1,1 +1,177 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=latin-ext');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    font-weight: 300;
+    margin: 0;
+}
+
+p, span {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: 300;
+}
+
+b, .bold {
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+.types-image {
+    margin: auto;
+    transition: 200ms all;
+}
+
+.types-image-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui-dialog-titlebar-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1%;
+}
+
+.types-image:hover{
+    filter: saturate(200%);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.spinner-div {
+    background-color: rgba(50, 115, 220, 0.3);
+    z-index: 1;
+    width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    float: left;
+    transition: 200ms all;
+    display: flex;
+    margin: 2%;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon:hover{
+    filter: saturate(200%);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.icon img {
+    height: 60%;
+    width: 60%;
+    display: block;
+    margin: auto;
+}
+
+.Bug {
+    background: #92BC2C;
+    box-shadow: 0 0 15px #92BC2C;
+}
+
+.Dark {
+    background: #595761;
+    box-shadow: 0 0 15px #595761;
+}
+
+.Dragon {
+    background: #0C69C8;
+    box-shadow: 0 0 15px #0C69C8;
+}
+
+.Electric {
+    background: #F2D94E;
+    box-shadow: 0 0 15px #F2D94E;
+}
+
+.Fire {
+    background: #FBA54C;
+    box-shadow: 0 0 15px #FBA54C;
+}
+
+.Fairy {
+    background: #EE90E6;
+    box-shadow: 0 0 15px #EE90E6;
+}
+
+.Fighting {
+    background: #D3425F;
+    box-shadow: 0 0 15px #D3425F;
+}
+
+.Flying {
+    background: #A1BBEC;
+    box-shadow: 0 0 15px #A1BBEC;
+}
+
+.Ghost {
+    background: #5F6DBC;
+    box-shadow: 0 0 15px #5F6DBC;
+}
+
+.Grass {
+    background: #5FBD58;
+    box-shadow: 0 0 15px #5FBD58;
+}
+
+.Ground {
+    background: #DA7C4D;
+    box-shadow: 0 0 15px #DA7C4D;
+}
+
+.Ice {
+    background: #75D0C1;
+    box-shadow: 0 0 15px #75D0C1;
+}
+
+.Normal {
+    background: #A0A29F;
+    box-shadow: 0 0 15px #A0A29F;
+}
+
+.Poison {
+    background: #B763CF;
+    box-shadow: 0 0 15px #B763CF;
+}
+
+.Psychic {
+    background: #FA8581;
+    box-shadow: 0 0 15px #FA8581;
+}
+
+.Rock {
+    background: #C9BB8A;
+    box-shadow: 0 0 15px #C9BB8A;
+}
+
+.Steel {
+    background: #5695A3;
+    box-shadow: 0 0 15px #5695A3;
+}
+
+.Water {
+    background: #539DDF;
+    box-shadow: 0 0 15px #539DDF;
+}
+
+body .pi {
+    font-size: 1em;
+}
