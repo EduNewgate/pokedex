@@ -5,25 +5,12 @@ export default class PkmQueries {
     query GetPokemonCards($offset: Int, $limit: Int) {
       getPokemonCards(offset: $offset, limit: $limit) {
         name
-        height
-        weight
         types {
           type {
             name
           }
         }
-        abilities {
-          is_hidden
-          ability {
-            name
-          }
-        }
-        stats {
-          base_stat
-          stat {
-            name
-          }
-        }
+        entry_number
       }
     }
   `;

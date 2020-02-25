@@ -75,11 +75,11 @@ export class PokemonCardComponent implements OnInit {
 
   setPkmData(pokemonCard: PokemonCard) {
     this.pokemonCard = pokemonCard;
-    this.setColor(this.pokemonCard.name);
-    this.buildChartData(pokemonCard.stats);
+    /*this.setColor(this.pokemonCard.name);
+    this.buildChartData(pokemonCard.stats);*/
   }
 
-  setColor(name: String) {
+  /*setColor(name: String) {
     this.img = <HTMLImageElement> document.getElementById("imgCard" + this.pokemonCard.name);
     this.color = Utils.getDominantColor(name, this.img);
   }
@@ -129,5 +129,5 @@ export class PokemonCardComponent implements OnInit {
         ]
       }
     };
-  }
+  }*/
 }

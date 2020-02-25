@@ -11,7 +11,7 @@ import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.com
 
 //PrimeNG Modules
 import {ButtonModule} from 'primeng/button';
-import {DialogModule} from 'primeng/dialog';
+import {SidebarModule} from 'primeng/sidebar';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {TooltipModule} from 'primeng/tooltip';
 import { ChartModule } from 'primeng/chart';
@@ -30,7 +30,7 @@ import { GraphQLModule } from './graphql.module';
     AppRoutingModule,
     HttpClientModule,
     ButtonModule,
-    DialogModule,
+    SidebarModule,
     ProgressSpinnerModule,
     TooltipModule,
     ChartModule,
