@@ -1,1 +1,23 @@
-<p>pokemon works!</p>
+<div class="header">
+    <app-pokemon-navigation></app-pokemon-navigation>
+    <div class="row title">
+        <div class="col-12">
+            <h2 class="header-item">
+                {{pokemonDetail.pkmCard.name}} - #{{pokemonDetail.pkmCard.entry_number}}
+            </h2>
+            <img *ngFor="let type of pokemonDetail.pkmCard.types" src="../../../../assets/types/{{type.type.name}}.png"
+                class="header-item types-image">
+            <div class="dropdown header-item">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

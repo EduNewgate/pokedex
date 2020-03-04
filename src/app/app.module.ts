@@ -8,6 +8,7 @@ import { AppComponent } from "./app.component";
 import { PokedexComponent } from "./components/pokedex/pokedex.component";
 import { PokemonComponent } from "./components/pokemon/pokemon.component";
 import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.component";
+import { PokemonNavigationComponent } from "./components/pokemon-navigation/pokemon-navigation.component";
 
 //PrimeNG Modules
 import {ButtonModule} from 'primeng/button';
@@ -22,7 +23,8 @@ import { GraphQLModule } from './graphql.module';
     AppComponent,
     PokedexComponent,
     PokemonComponent,
-    PokemonCardComponent
+    PokemonCardComponent,
+    PokemonNavigationComponent
   ],
   imports: [
     BrowserModule,

@@ -4,18 +4,6 @@
     padding: 1rem;
 }
 
-.ui-button {
-    background-color: white;
-    border-color: white;
-    color: black;
-    font-weight: bold;
-    font-size: medium;
-}
-
-.ui-button:hover {
-    color: black;
-}
-
 .data {
     display: block;
     justify-content: center;
@@ -23,6 +11,6 @@
 }
 
 .header-item {
-    margin: 10px;
+    margin: 5px; 
 }
 

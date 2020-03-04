@@ -2,12 +2,12 @@ import { Component, OnInit, HostListener } from "@angular/core";
 
 // Models
 import { PokemonCard } from "../../models/own/PokemonCard";
-import { PokemonStat } from "../../models/pokemon/PokemonStat";
 
 // Services
 import { Apollo } from "apollo-angular";
 import PkmQueries from "../../queries/pokemon-card";
-import Utils from "../../utils/Utils";
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonDetail } from 'src/app/models/own/PokemonDetail';
 
 const PokemonCardsQuery = PkmQueries.PokemonCardsQuery;
 
@@ -19,6 +19,7 @@ const PokemonCardsQuery = PkmQueries.PokemonCardsQuery;
 export class PokemonCardComponent implements OnInit {
   pokemonCards: PokemonCard[];
   pokemonCard: PokemonCard;
+  pokemonDetail: PokemonDetail;
   img: HTMLImageElement
 
   offset: number;
@@ -29,7 +30,7 @@ export class PokemonCardComponent implements OnInit {
   chartOptions: any;
   color: number[];
 
-  constructor(private apollo: Apollo) {
+  constructor(private apollo: Apollo, private pokemonService: PokemonService) {
     this.pokemonCards = new Array();
     this.offset = 0;
     this.limit = 20;

@@ -1,15 +1,11 @@
 import { PokemonType } from '../pokemon/PokemonType';
-import { PokemonAbility } from '../pokemon/PokemonAbility';
-import { PokemonStat } from '../pokemon/PokemonStat';
 
 export class PokemonCard {
 
     name: String;
-    weight: number;
-    height: number;
+    entry_number: String;
     types: PokemonType[];
-    abilities: PokemonAbility[];
-    stats: PokemonStat[];
+    count: number
 
     constructor() { }
 }

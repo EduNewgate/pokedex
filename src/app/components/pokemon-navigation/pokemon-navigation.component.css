@@ -1,0 +1,19 @@
+.pagin {
+    margin-bottom: 2vh;
+}
+
+.previous, .next {
+    cursor: pointer;
+}
+
+.previous .pk {
+    float: left;
+}
+
+.next .pk {
+    float: right;
+}
+
+.pk {
+    margin: 5px;
+}

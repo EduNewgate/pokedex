@@ -1,17 +1,17 @@
 <div class="row">
     <div *ngFor="let pkmCard of pokemonCards" class="card" style="width: 15rem; margin: 1rem; cursor: pointer;"
-        (click)="showDialog(pkmCard);">
-        <img id="imgCard{{pkmCard.name}}" src="../../../assets/pokemon/{{pkmCard.name}}.png" class="card-img-top"
+        routerLink="/pokedex/{{pkmCard.pokemon_species.name.toLowerCase()}}">
+        <img id="imgCard{{pkmCard.name}}" src="../../../assets/pokemon/{{pkmCard.pokemon_species.name}}.png" class="card-img-top"
             alt="{{pkmCard.name}}">
         <div class="card-body">
             <h5 class="card-title bold">
-                {{pkmCard.name}}
+                {{pkmCard.pokemon_species.name}}
             </h5>
             <h6 class="card-subtitle mb-2 text-muted">
                 Nº {{pkmCard.entry_number}}
             </h6>
             <div class="row">
-                <div *ngFor="let type of pkmCard.types; let length = count" class="col-6">
+                <div *ngFor="let type of pkmCard.pokemon_species.varieties[0].pokemon.types; let length = count" class="col-6">
                     <img src="../../../assets/types/{{type.type.name}}.png" class="types-image">
                 </div>
             </div>
@@ -22,51 +22,3 @@
     <p-progressSpinner strokeWidth="1" [style]="{width: '5rem', height: '5rem', display: 'block', margin: 'auto'}">
     </p-progressSpinner>
 </div>
-<p-sidebar *ngIf="pokemonCard" position="left" [(visible)]="displayDialog" [modal]="true" [blockScroll]="true"
-    [style]="{width: '50vw'}">
-    <div class="row header">
-        <div class="header-item">
-            <h3>
-                {{pokemonCard.name}} - #{{pokemonCard.entry_number}}
-            </h3>
-        </div>
-        <div *ngFor="let type of pokemonCard.types; let length = count" class="header-item">
-            <img src="../../../assets/types/{{type.type.name}}.png" class="types-image">
-        </div>
-    </div>
-    <div class="content">
-        <div class="row">
-            <div class="col-4">
-                <div class="row" style="margin: 1rem;">
-                    <img src="../../../assets/pokemon/{{pokemonCard.name}}.png" style="width: 100%;"
-                        alt="{{pokemonCard.name}}">
-                </div>
-            </div>
-            <div class="col-8 data">
-                <!--<div class="row" style="margin: 1rem;">
-                    <div class="col-4 bold">Height</div>
-                    <div class="col-8">{{pokemonCard.height}} meters</div>
-                </div>
-                <div class="row" style="margin: 1rem;">
-                    <div class="col-4 bold">Weight</div>
-                    <div class="col-8">{{pokemonCard.weight}} kg</div>
-                </div>
-                <div style="margin: 1rem;" *ngFor="let ability of pokemonCard.abilities; let i = index" class="row">
-                    <div *ngIf="ability.is_hidden; then hiddenAb else normalAb"></div>
-                    <ng-template #hiddenAb>
-                        <div class="col-4 bold">Hidden ability</div>
-                    </ng-template>
-                    <ng-template #normalAb>
-                        <div class="col-4 bold">Ability {{i+1}}</div>
-                    </ng-template>
-                    <div class="col-8">{{ability.ability.name}}</div>
-                </div>-->
-            </div>
-        </div>
-        <!--<div class="row">
-            <div class="col-12">
-                <p-chart type="bar" [data]="dataChart" [options]="chartOptions"></p-chart>
-            </div>
-        </div>-->
-    </div>
-</p-sidebar>

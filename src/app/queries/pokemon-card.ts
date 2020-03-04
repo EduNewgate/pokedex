@@ -4,13 +4,21 @@ export default class PkmQueries {
   public static PokemonCardsQuery = gql`
     query GetPokemonCards($offset: Int, $limit: Int) {
       getPokemonCards(offset: $offset, limit: $limit) {
-        name
-        types {
-          type {
-            name
+        entry_number
+        pokemon_species {
+          name
+          varieties {
+            is_default
+            pokemon {
+              name
+              types {
+                type {
+                  name
+                }
+              }
+            }
           }
         }
-        entry_number
       }
     }
   `;

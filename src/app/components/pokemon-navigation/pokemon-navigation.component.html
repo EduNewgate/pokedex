@@ -1,0 +1,16 @@
+<div class="row pagin">
+    <div class="col-6">
+        <a href="/pokedex/{{pokemonDetail.previous.name.toLowerCase()}}" class="previous">
+            <span class="pk pi pi-arrow-left"></span>
+            <span class="pk pokemon-number">Nº {{pokemonDetail.previous.entry_number}}</span>
+            <span class="pk pokemon-name">{{pokemonDetail.previous.name}}</span>
+        </a>
+    </div>
+    <div class="col-6">
+        <a href="/pokedex/{{pokemonDetail.next.name.toLowerCase()}}" class="next">
+            <span class="pk pi pi-arrow-right"></span>
+            <span class="pk pokemon-name">{{pokemonDetail.next.name}}</span>
+            <span class="pk pokemon-number">Nº {{pokemonDetail.next.entry_number}}</span>
+        </a>
+    </div>
+</div>

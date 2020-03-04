@@ -3,7 +3,7 @@
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.3;
+    line-height: 1;
     letter-spacing: 0.1em;
     font-weight: 300;
     margin: 0;
@@ -25,17 +25,17 @@ b, .bold {
     transition: 200ms all;
 }
 
+.types-image:hover{
+    filter: saturate(200%);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .ui-dialog-titlebar-icon {
     position: absolute;
     top: 0;
     right: 0;
     margin: 1%;
-}
-
-.types-image:hover{
-    filter: saturate(200%);
-    transform: scale(1.1);
-    cursor: pointer;
 }
 
 .spinner-div {

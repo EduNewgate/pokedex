@@ -1,0 +1,14 @@
+.header-item {
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.header-item.types-image {
+    width: 60px;
+}
+
+.dropdown.header-item {
+    float: right;
+    height: auto;
+}
